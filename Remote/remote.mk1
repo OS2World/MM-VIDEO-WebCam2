@@ -1,0 +1,22 @@
+!define BLANK ""
+e:\webcam\remote\remote.obj : e:\webcam\remote\remote.c .AUTODEPEND
+ @e:
+ cd e:\webcam\remote
+ *wcc386 remote.c -i=C:\WATCOM\h;D:\TOOLKIT\h;C:\WATCOM\h\os2 -w4 -e25 -d__I&
+BMC__ -zq -otexan -5r -bt=os2 -mf
+
+e:\webcam\remote\remote.exe : e:\webcam\remote\remote.obj .AUTODEPEND
+ @e:
+ cd e:\webcam\remote
+ @%write remote.lk1 NAME remote
+ @%append remote.lk1 FIL remote.obj
+ @%append remote.lk1 
+!ifneq BLANK ""
+ *wlib -q -n -b remote.imp 
+ @%append remote.lk1 LIBR remote.imp
+!endif
+ *wlink SYS os2v2 op maxe=25 op q @remote.lk1
+!ifneq BLANK ""
+ rc -i $[: -i D:\TOOLKIT\h -i C:\WATCOM\h -i C:\WATCOM\h\os2  remote.exe
+!endif
+

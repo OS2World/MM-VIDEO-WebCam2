@@ -1,0 +1,32 @@
+#ifndef OS2_INCLUDED
+   #include <os2.h>
+#endif
+DLGINCLUDE 1 "E:\WebCam\webcam.h"
+
+DLGTEMPLATE 100 LOADONCALL MOVEABLE DISCARDABLE
+BEGIN
+    DIALOG  "WebCam Settings", 100, 76, 10, 224, 132, WS_VISIBLE, 
+            FCF_SYSMENU | FCF_TITLEBAR
+    BEGIN
+        CONTROL         "Region", DLG_CB_REGION, 8, 60, 80, 48, WC_COMBOBOX, 
+                        CBS_DROPDOWNLIST | WS_GROUP | WS_TABSTOP | 
+                        WS_VISIBLE
+        SPINBUTTON      DLG_SP_CHANNEL, 126, 94, 34, 12, SPBS_READONLY | 
+                        SPBS_MASTER | WS_GROUP
+        SPINBUTTON      DLG_SP_DIGITALVIDEO, 8, 114, 72, 12, SPBS_READONLY | 
+                        SPBS_MASTER | WS_GROUP
+        SPINBUTTON      DLG_SP_CONNECTOR, 112, 114, 48, 12, SPBS_READONLY | 
+                        SPBS_MASTER | WS_GROUP
+        SPINBUTTON      DLG_SP_INTERVAL_HOURS, 10, 66, 32, 12, SPBS_READONLY | 
+                        SPBS_MASTER | WS_GROUP
+        AUTORADIOBUTTON "WEBCAM.BMP", DLG_RB_FILENAME_WEBCAM, 12, 32, 84, 10, 
+                        WS_TABSTOP
+        AUTORADIOBUTTON "Date-Time.BMP", DLG_RB_FILNAME_DATETIME, 12, 16, 94, 
+                        10, WS_TABSTOP
+        SPINBUTTON      DLG_SP_INTERVAL_MINUTES, 72, 64, 32, 12, 
+                        SPBS_READONLY | SPBS_MASTER | WS_GROUP
+        SPINBUTTON      DLG_SP_INTERVAL_SECONDS, 134, 64, 32, 12, 
+                        SPBS_READONLY | SPBS_MASTER | WS_GROUP
+        PUSHBUTTON      "OK", DID_OK, 138, 22, 40, 14
+    END
+END

@@ -1,0 +1,14 @@
+#include <os2.h>
+#include "elsacam.h"
+
+ICON ID_ClientWindow ewocam.ico
+ICON DLG_PRODINFO_ICO ewocam.ico
+rcinclude elsacdlg.dlg
+
+MENU    ID_ClientWindow PRELOAD
+    BEGIN
+    MENUITEM "~Click!",   IDM_CLICK,    MIS_TEXT
+    MENUITEM "~Settings", IDM_SETTINGS, MIS_TEXT
+    MENUITEM "~About",    IDM_ABOUT,    MIS_TEXT
+    END
+

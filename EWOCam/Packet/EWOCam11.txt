@@ -1,0 +1,30 @@
+                          Upload Information Template for Hobbes.nmsu.edu
+                          ===============================================
+
+        Archive Filename: EWOCAM11.zip
+       Short Description: WWW-Cam utility for ELSA WINNER 2000/Office VideoIn
+        Long Description: EWOCam/2 ELSA WINNER 2000/Office Web Camera for OS/2 version 1.1
+                          Creates timed snapshots from VideoIn device source,
+                          can be used to set up a WWW-Camera
+                          30 Jul 1998 : program terminates correcly now
+
+      Proposed directory
+           for placement: /pub/os2/apps/mmedia/video/capture
+
+               Your name: Jurgen Dittmer
+           Email address: dittmer@gkss.de
+    Program contact name: Jurgen Dittmer
+   Program contact email: dittmer@gkss.de
+             Program URL: http://wave.gkss.de
+
+      Would you like the
+   contact email address
+    included in listings? yes
+
+Operating System/Version: OS/2 Warp Version 4
+ Additional requirements: ELSA WINNER 2000/Office graphic adapter with VideoIn driver from ELSA
+
+                Replaces: EWOCAM10.ZIP
+
+
+

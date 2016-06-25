@@ -1,0 +1,101 @@
+WebCam/2 ReadMe
+
+8 Sep 1997  
+
+Whats new:
+
+8 Sep 1997 - REMOTE.EXE triggers a running WebCam/2 from another process
+
+
+
+WarpTV comes with an application for watching TV in an overlay window.
+It has all the controls known from a TV set. It can also take a snapshot of
+the screen and save it. But it is not possible to take pictures in intervals
+unattended.
+
+WebCam/2 allows to select a video source and a time interval for saving a
+snapshot to disk. Primary I wrote this app for myself, but it came out that
+many OS/2 users want to have this, too...
+
+
+Requirements for WebCam/2 
+
+  1. A Video input adapter with drivers (only FAST MMII tested, don't know about Haupauge adapters) 
+  2. OS/2 Device driver for the Video adapter 
+  3. Optional: WarpTV or equivalent to adjust the video source in real time 
+
+
+WebCam/2's current developement status: 
+
+New:
+After an image snapshot WebCam/2 calls a REXX file named "WCamExit.CMD".
+It can be used for an external program e.g. to convert the bitmap into JPEG format.
+See example file: It calls GBMREF.EXE to do this convertion.
+I added the files GBMREF.EXE and GBM.DLL from Andy Key. For more information look at
+http://www.interalpha.net/customer/nyangau/
+
+In the future I want to add JPEG support directly to WebCam/2, but until today I
+have not got the GBM library to work with my WATCOM compiler... (any suggestions?)
+
+Unfortunately, I have waste my time with working and therefore a limited free time for my hobbies ;-)
+So it can take some weeks for finishing WebCam/2!
+
+You are welcome to test WebCam/2, especially with Hauppauge adapters. Any wish and comment highly
+appreciated!
+
+
+Installation and deinstallation
+
+Copy WEBCAM.EXE to a directory of your choice. After the first program start
+a file WEBCAM.INI is created, where WabCam/2 stores its settings. It does
+not change your system ini files!
+If you want to deinstall WebCam/2, just delete WEBCAM.EXE and WEBCAM.INI, thats it.
+
+
+Running WebCam/2
+
+Before you can use WebCam/2, you have to configure it using the WebCam Settings dialog:
+
+Video Device:    The system's name of your video-input device, e.g.:Digitalvideo03
+Input Connector: Video source of the adapter, video input or TV tuner
+TV Region:       Depends on your country and TV source (antenna or cable)
+TV Channel:      Your favorite...
+Interval:        This is the time between the video snapshots, 1 second to 24 hours.
+                 Disabled, if Hours, Minutes and Seconds are set to 0.
+Filename Format: WEBCAM.BMP - only one image file will be created and overwritten
+                 with the next snapshot.
+                 <Time>.BMP - The filename will be created from the current time.
+                 Using this selection, you store the images for 24 hours until
+                 they will be overwritten.
+                 <Date-Time>.BMP- This selection gives every image an individual
+                 filename from the actual date and time. Every image will be kept
+                 until your disk runs full!
+
+
+You can manually take a snapshot by either selecting "Click!" from the menu,
+pressing ALT-C, or double-click with mousebutton 1 in the window.
+
+It is also possible to "remote-control" WebCam/2 from another program, e.g. a REXX script:
+Start WebCam/2 as usual, time interval can be set to zero. Execution of REMOTE.EXE causes
+WebCam/2 to update the image. REMOTE.EXE can be located in any directory.
+Example: Imagine you want to have the video snapshot controlled by a special event;
+this can be e.g. the execution of a web server cgi program or within a script file.
+Just execute or call REMOTE.EXE while WebCam/2 is running in a forground session or 
+minimized.
+For programmers: Post the event semaphore "\\SEM32\\WEBCAM\\CAPTURE".
+
+
+A note about system performance:
+WebCam/2 uses the MCI_GETIMAGEBUFFER command to read out the video source.
+This function has a very high thread priority and causes a high system load
+during execution time. If you have selected a very short interval (1 second),
+WebCam/2 can slow down your system. Between the image snapshots, the program
+consumes almost no CPU time, all the threads are waiting.
+
+
+Have fun!
+
+Juergen Dittmer
+dittmer@gkss.de
+http://wave.gkss.de
+

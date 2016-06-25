@@ -1,0 +1,36 @@
+!define BLANK ""
+e:\webcam\mm2\profile.obj : e:\webcam\mm2\profile.c .AUTODEPEND
+ @e:
+ cd e:\webcam\mm2
+ *wcc386 profile.c -i=C:\WATCOM\h;D:\TOOLKIT\h;C:\WATCOM\h\os2 -w4 -e25 -d__&
+IBMC__ -zq -bm -5r -bt=os2 -mf
+
+e:\webcam\mm2\webcam.obj : e:\webcam\mm2\webcam.c .AUTODEPEND
+ @e:
+ cd e:\webcam\mm2
+ *wcc386 webcam.c -i=C:\WATCOM\h;D:\TOOLKIT\h;C:\WATCOM\h\os2 -w4 -e25 -d__I&
+BMC__ -zq -bm -5r -bt=os2 -mf
+
+e:\webcam\mm2\webcam.res : e:\webcam\mm2\webcam.rc .AUTODEPEND
+ @e:
+ cd e:\webcam\mm2
+ rc -i $[: -i D:\TOOLKIT\h -i C:\WATCOM\h -i C:\WATCOM\h\os2 -r webcam.rc we&
+bcam.res
+
+e:\webcam\mm2\webcam.exe : e:\webcam\mm2\profile.obj e:\webcam\mm2\webcam.ob&
+j e:\webcam\mm2\webcam.h e:\webcam\mm2\webcam.res .AUTODEPEND
+ @e:
+ cd e:\webcam\mm2
+ @%write webcam.lk1 NAME webcam
+ @%append webcam.lk1 FIL profile.obj,webcam.obj
+ @%append webcam.lk1 
+!ifneq BLANK ""
+ *wlib -q -n -b webcam.imp 
+ @%append webcam.lk1 LIBR webcam.imp
+!endif
+ *wlink SYS os2v2 pm libr mmpm2 op maxe=25 op q op el @webcam.lk1
+!ifneq BLANK "webcam.res"
+ rc -i $[: -i D:\TOOLKIT\h -i C:\WATCOM\h -i C:\WATCOM\h\os2 webcam.res webc&
+am.exe
+!endif
+

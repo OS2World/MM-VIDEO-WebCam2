@@ -1,0 +1,15 @@
+#include <os2.h>
+#include "webcam.h"
+
+ICON ID_ClientWindow webcam.ico
+ICON DLG_PRODINFO_ICO webcam.ico
+rcinclude webcdlg.dlg
+
+MENU    ID_ClientWindow PRELOAD
+    BEGIN
+    MENUITEM "~Click!",   IDM_CLICK,    MIS_TEXT
+    MENUITEM "~Settings", IDM_SETTINGS, MIS_TEXT
+    MENUITEM "~About",    IDM_ABOUT,    MIS_TEXT
+    MENUITEM "~Exit",     IDM_EXIT,     MIS_TEXT
+    END
+

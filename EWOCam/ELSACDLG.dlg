@@ -1,0 +1,57 @@
+#ifndef OS2_INCLUDED
+   #include <os2.h>
+#endif
+DLGINCLUDE 1 "ELSACam.h"
+
+DLGTEMPLATE DLG_SETTINGS LOADONCALL MOVEABLE DISCARDABLE
+BEGIN
+    DIALOG  "EWOCam/2 Settings", DLG_SETTINGS, 70, 25, 235, 105, WS_VISIBLE, 
+            FCF_SYSMENU | FCF_TITLEBAR
+    BEGIN
+        SPINBUTTON      DLG_SP_INTERVAL_HOURS, 15, 30, 27, 12, 
+                        SPBS_NUMERICONLY | SPBS_MASTER | WS_GROUP
+        AUTORADIOBUTTON "WEBCAM.BMP", DLG_RB_FILENAME_WEBCAM, 125, 80, 75, 
+                        10, WS_TABSTOP
+        AUTORADIOBUTTON "<Time>.BMP", DLG_RB_FILENAME_TIME, 125, 70, 80, 10, 
+                        WS_TABSTOP
+        AUTORADIOBUTTON "<Date-Time>.BMP", DLG_RB_FILENAME_DATETIME, 125, 60, 
+                        90, 10, WS_TABSTOP
+        SPINBUTTON      DLG_SP_INTERVAL_MINUTES, 80, 30, 27, 12, 
+                        SPBS_NUMERICONLY | SPBS_MASTER | WS_GROUP
+        SPINBUTTON      DLG_SP_INTERVAL_SECONDS, 155, 30, 27, 12, 
+                        SPBS_NUMERICONLY | SPBS_MASTER | WS_GROUP
+        PUSHBUTTON      "Make it so!", DATE_TIME, 140, 5, 90, 14
+        LTEXT           "Hours", -1, 45, 30, 30, 8
+        LTEXT           "Minutes", -1, 110, 30, 40, 8
+        LTEXT           "Seconds", -1, 185, 30, 34, 8
+        GROUPBOX        "Interval", -1, 5, 25, 225, 25
+        GROUPBOX        "Filename Format", -1, 120, 55, 110, 45
+        AUTOCHECKBOX    "Just view video", DLG_CK_MONITOR, 10, 5, 110, 10
+        AUTORADIOBUTTON "160 x 120", DLG_RB_RES_160, 10, 80, 85, 10, 
+                        WS_TABSTOP
+        AUTORADIOBUTTON "320 x 240", DLG_RB_RES_320, 10, 70, 85, 10, 
+                        WS_TABSTOP
+        AUTORADIOBUTTON "640 x 480", DLG_RB_RES_640, 10, 60, 80, 10, 
+                        WS_TABSTOP
+        GROUPBOX        "Image Size", -1, 5, 55, 105, 45
+    END
+END
+
+DLGTEMPLATE DLG_PRODINFO LOADONCALL MOVEABLE DISCARDABLE
+BEGIN
+    DIALOG  "Product Information", DLG_PRODINFO, 45, 25, 290, 104, 
+            WS_VISIBLE, FCF_SYSMENU | FCF_TITLEBAR
+    BEGIN
+        ICON            DLG_PRODINFO_ICO, DLG_PRODINFO_ICO, 135, 80, 20, 16, 
+                        WS_GROUP
+        CTEXT           "EWOCam/2 Version 1.1", -1, 55, 65, 180, 10, 
+                        DT_VCENTER
+        CTEXT           "Copyright 1998 JÅrgen Dittmer", -1, 55, 35, 180, 10, 
+                        DT_VCENTER
+        CTEXT           "eMail: dittmer@gkss.de", -1, 55, 25, 180, 10, 
+                        DT_VCENTER
+        PUSHBUTTON      "OK", DATE_TIME, 90, 5, 110, 15
+        CTEXT           "WebCam for ELSA(R) Winner Office VideoIn", -1, 15, 
+                        50, 265, 10, DT_VCENTER
+    END
+END

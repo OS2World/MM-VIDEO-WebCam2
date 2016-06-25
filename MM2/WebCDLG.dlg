@@ -1,0 +1,61 @@
+#ifndef OS2_INCLUDED
+   #include <os2.h>
+#endif
+DLGINCLUDE 1 "E:\WebCam\webcam.h"
+
+DLGTEMPLATE DLG_SETTINGS LOADONCALL MOVEABLE DISCARDABLE
+BEGIN
+    DIALOG  "WebCam Settings", DLG_SETTINGS, 90, 10, 200, 152, WS_VISIBLE, 
+            FCF_SYSMENU | FCF_TITLEBAR
+    BEGIN
+        SPINBUTTON      DLG_SP_CHANNEL, 120, 80, 29, 12, SPBS_NUMERICONLY | 
+                        SPBS_MASTER | WS_GROUP
+        SPINBUTTON      DLG_SP_DIGITALVIDEO, 15, 120, 85, 12, SPBS_READONLY | 
+                        SPBS_MASTER | WS_GROUP
+        SPINBUTTON      DLG_SP_CONNECTOR, 120, 120, 29, 12, SPBS_NUMERICONLY | 
+                        SPBS_MASTER | WS_GROUP
+        SPINBUTTON      DLG_SP_INTERVAL_HOURS, 15, 50, 32, 12, 
+                        SPBS_NUMERICONLY | SPBS_MASTER | WS_GROUP
+        AUTORADIOBUTTON "WEBCAM.BMP", DLG_RB_FILENAME_WEBCAM, 110, 50, 75, 
+                        10, WS_TABSTOP
+        AUTORADIOBUTTON "<Time>.BMP", DLG_RB_FILENAME_TIME, 110, 40, 80, 10, 
+                        WS_TABSTOP
+        AUTORADIOBUTTON "<Date-Time>.BMP", DLG_RB_FILENAME_DATETIME, 110, 30, 
+                        90, 10, WS_TABSTOP
+        SPINBUTTON      DLG_SP_INTERVAL_MINUTES, 15, 35, 32, 12, 
+                        SPBS_NUMERICONLY | SPBS_MASTER | WS_GROUP
+        SPINBUTTON      DLG_SP_INTERVAL_SECONDS, 15, 20, 32, 12, 
+                        SPBS_NUMERICONLY | SPBS_MASTER | WS_GROUP
+        PUSHBUTTON      "OK", DATE_TIME, 155, 5, 40, 14
+        SPINBUTTON      DLG_SP_REGION, 15, 80, 85, 12, SPBS_READONLY | 
+                        SPBS_MASTER | WS_GROUP
+        LTEXT           "Video Device", -1, 15, 130, 70, 8
+        LTEXT           "Input Connector", -1, 120, 130, 74, 8
+        LTEXT           "TV Region", -1, 15, 90, 72, 8
+        LTEXT           "TV Channel", -1, 120, 90, 58, 8
+        LTEXT           "Hours", -1, 50, 50, 30, 8
+        LTEXT           "Minutes", -1, 50, 35, 40, 8
+        LTEXT           "Seconds", -1, 50, 20, 34, 8
+        GROUPBOX        "Device Settings", -1, 5, 115, 190, 35
+        GROUPBOX        "TV Tuner", -1, 5, 75, 190, 35
+        GROUPBOX        "Interval", -1, 5, 15, 90, 55
+        GROUPBOX        "Filename Format", -1, 105, 25, 90, 45
+    END
+END
+
+DLGTEMPLATE DLG_PRODINFO LOADONCALL MOVEABLE DISCARDABLE
+BEGIN
+    DIALOG  "Product Information", DLG_PRODINFO, 90, 25, 185, 104, 
+            WS_VISIBLE, FCF_SYSMENU | FCF_TITLEBAR
+    BEGIN
+        ICON            DLG_PRODINFO_ICO, DLG_PRODINFO_ICO, 85, 80, 20, 16, 
+                        WS_GROUP
+        CTEXT           "WebCam/2 Version 0.9", -1, 15, 60, 160, 8, 
+                        DT_VCENTER
+        CTEXT           "Copyright 1997 JÅrgen Dittmer", -1, 15, 40, 160, 8, 
+                        DT_VCENTER
+        CTEXT           "eMail: dittmer@gkss.de", -1, 30, 25, 130, 8, 
+                        DT_VCENTER
+        PUSHBUTTON      "OK", DATE_TIME, 75, 5, 40, 14
+    END
+END

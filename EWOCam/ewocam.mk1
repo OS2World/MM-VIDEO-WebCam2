@@ -1,0 +1,51 @@
+!define BLANK ""
+e:\webcam\ewocam\bmp2jpg.obj : e:\webcam\ewocam\bmp2jpg.c .AUTODEPEND
+ @e:
+ cd e:\webcam\ewocam
+ *wcc386 bmp2jpg.c -i=C:\WATCOM\h;D:\TOOLKIT\h;C:\WATCOM\h\os2 -w4 -e25 -d__&
+IBMC__ -zq -bm -5r -bt=os2 -mf
+
+e:\webcam\ewocam\elsa.obj : e:\webcam\ewocam\elsa.c .AUTODEPEND
+ @e:
+ cd e:\webcam\ewocam
+ *wcc386 elsa.c -i=C:\WATCOM\h;D:\TOOLKIT\h;C:\WATCOM\h\os2 -w4 -e25 -d__IBM&
+C__ -zq -bm -5r -bt=os2 -mf
+
+e:\webcam\ewocam\elsacam.obj : e:\webcam\ewocam\elsacam.c .AUTODEPEND
+ @e:
+ cd e:\webcam\ewocam
+ *wcc386 elsacam.c -i=C:\WATCOM\h;D:\TOOLKIT\h;C:\WATCOM\h\os2 -w4 -e25 -d__&
+IBMC__ -zq -bm -5r -bt=os2 -mf
+
+e:\webcam\ewocam\profile.obj : e:\webcam\ewocam\profile.c .AUTODEPEND
+ @e:
+ cd e:\webcam\ewocam
+ *wcc386 profile.c -i=C:\WATCOM\h;D:\TOOLKIT\h;C:\WATCOM\h\os2 -w4 -e25 -d__&
+IBMC__ -zq -bm -5r -bt=os2 -mf
+
+e:\webcam\ewocam\elsacam.res : e:\webcam\ewocam\elsacam.rc .AUTODEPEND
+ @e:
+ cd e:\webcam\ewocam
+ rc -i $[: -i D:\TOOLKIT\h -i C:\WATCOM\h -i C:\WATCOM\h\os2 -r elsacam.rc e&
+lsacam.res
+
+e:\webcam\ewocam\ewocam.exe : e:\webcam\ewocam\bmp2jpg.obj e:\webcam\ewocam\&
+elsa.obj e:\webcam\ewocam\elsacam.obj e:\webcam\ewocam\profile.obj e:\webcam&
+\ewocam\elsa.h e:\webcam\ewocam\elsacam.h e:\webcam\ewocam\printf.obj e:\web&
+cam\ewocam\elsacam.res .AUTODEPEND
+ @e:
+ cd e:\webcam\ewocam
+ @%write ewocam.lk1 NAME ewocam
+ @%append ewocam.lk1 FIL bmp2jpg.obj,elsa.obj,elsacam.obj,profile.obj,printf&
+.obj
+ @%append ewocam.lk1 
+!ifneq BLANK ""
+ *wlib -q -n -b ewocam.imp 
+ @%append ewocam.lk1 LIBR ewocam.imp
+!endif
+ *wlink SYS os2v2 pm libr mmpm2 op maxe=25 op q op el @ewocam.lk1
+!ifneq BLANK "elsacam.res"
+ rc -i $[: -i D:\TOOLKIT\h -i C:\WATCOM\h -i C:\WATCOM\h\os2 elsacam.res ewo&
+cam.exe
+!endif
+
